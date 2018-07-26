@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <title>Pathway - Proximity is Precious</title>
+    <meta name="author" content="jherjati@gmail.com">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="ext/customScroll/css/jquery.mCustomScrollbar.css" rel="stylesheet">
+    <link href="css/style.default.css" rel="stylesheet">
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.css'
+        type='text/css' />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 7%;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .mapboxgl-ctrl-geocoder {
+            min-width: 100%;
+        }
+
+        .mapbox-improve-map {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-default nav-fixed-top" role="navigation" id="app-nav-bar">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Pathway</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="browse.html">Browse</a>
+                </li>
+
+            </ul>
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Application
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#">Setting</a>
+                        </li>
+                        <li>
+                            <a href="#">Manage User</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Master
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#">Point</a>
+                        </li>
+                        <li>
+                            <a href="#">Category</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="about.html">About</a>
+                </li>
+
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <p class="navbar-text">Signed in as Miko</p>
+                </li>
+                <li>
+                    <a href="login.html">Login</a>
+                </li>
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
+
+    <div id="map"></div>
+    <div class="visible-lg visible-md">
+        <div id="search-box"></div>
+        <div id="sidemenu" class="well">
+            <div class="btn-group btn-group-justified btn-group-sm">
+                <a class="btn btn-default">
+                    <i class="glyphicon glyphicon-fullscreen"></i> Fit in Window </a>
+                <a class="btn btn-default">
+                    <i class="glyphicon glyphicon-filter"></i> Filter </a>
+            </div>
+            <div class="divider10"></div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <a>Sort By</a>
+                </div>
+            </div>
+            <div class="list-group point-list-view">
+                <a href="#" class="list-group-item point-item">
+                    <h4 class="list-group-item-heading">Masjid Al Amanah</h4>
+                    <p class="list-group-item-text">
+                        Location Address
+                    </p>
+                </a>
+                <a href="#" class="list-group-item point-item">
+                    <h4 class="list-group-item-heading">Masjid Al Ihsan DH</h4>
+                    <p class="list-group-item-text">
+                        Location Address
+                    </p>
+                </a>
+                <a href="#" class="list-group-item point-item">
+                    <h4 class="list-group-item-heading">Masjid Batan</h4>
+                    <p class="list-group-item-text">
+                        Location Address
+                    </p>
+                </a>
+                <a href="#" class="list-group-item point-item">
+                    <h4 class="list-group-item-heading">Masjid PDAM</h4>
+                    <p class="list-group-item-text">
+                        Location Address
+                    </p>
+                </a>
+                <a href="#" class="list-group-item point-item">
+                    <h4 class="list-group-item-heading">Masjid Darudda'wah</h4>
+                    <p class="list-group-item-text">
+                        Location Address
+                    </p>
+                </a>
+                <a href="#" class="list-group-item point-item">
+                    <h4 class="list-group-item-heading">Masjid Darul Ihsan</h4>
+                    <p class="list-group-item-text">
+                        Location Address
+                    </p>
+                </a>
+                <a href="#" class="list-group-item point-item">
+                    <h4 class="list-group-item-heading">Masjid Ash Shiddiq</h4>
+                    <p class="list-group-item-text">
+                        Location Address
+                    </p>
+                </a>
+                <a href="#" class="list-group-item point-item">
+                    <h4 class="list-group-item-heading">Masjid Raya Cipaganti</h4>
+                    <p class="list-group-item-text">
+                        Location Address
+                    </p>
+                </a>
+                <a href="#" class="list-group-item point-item">
+                    <h4 class="list-group-item-heading">Masjid Al Furqon</h4>
+                    <p class="list-group-item-text">
+                        Location Address
+                    </p>
+                </a>
+                <a href="#" class="list-group-item point-item">
+                    <h4 class="list-group-item-heading">Masjid Al Ukhuwah</h4>
+                    <p class="list-group-item-text">
+                        Location Address
+                    </p>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <!-- Bootstrap core JavaScript
+        ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="ext/customScroll/js/jquery.mCustomScrollbar.min.js"></script>
+    <script src="ext/customScroll/js/jquery.mousewheel.min.js"></script>
+    <script src="js/application.js"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.min.js'></script>
+    <script>
+        mapboxgl.accessToken =
+            'pk.eyJ1IjoiamhlcmphdGkiLCJhIjoiY2plZHh4MG53MW16aTMzcWVpc2p2M2JpMiJ9.bF1qJvjxQjMsuVj4pHJe0g';
+
+        // Initialize map
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/light-v9',
+            center: [107.57844, -6.92758],
+            zoom: 12,
+            hash: true,
+        });
+
+        // Add controls
+        var geocoder = new MapboxGeocoder({
+            accessToken: mapboxgl.accessToken,
+            country: 'id',
+        });
+        $("#search-box").append(geocoder.onAdd(map));
+        map.addControl(new mapboxgl.GeolocateControl({
+            positionOptions: {
+                enableHighAccuracy: true
+            },
+            trackUserLocation: true
+        }));
+
+        // Custom scrollbar
+        (function ($) {
+            $(".point-list-view").mCustomScrollbar({
+                scrollButtons: {
+                    enable: true
+                },
+                theme: 'dark-thick',
+                contentTouchScroll: true
+            });
+        })(jQuery);
+
+        // Active onclick
+        $(".list-group-item").on("click", function () {
+            $(".list-group-item").removeClass("active");
+            $(this).addClass("active");
+        });
+    </script>
+</body>
+
+</html>
